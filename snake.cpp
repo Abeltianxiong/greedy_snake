@@ -90,7 +90,7 @@ bool Snake::GetFood(Food & cfood)//
 		return false;
 }
 
-void Snake::Move()
+void Snake::Move()//这个是重点
 {//初始状态的移动方向是向下
 	switch (direction)
 	{
@@ -117,4 +117,19 @@ void Snake::NormalMove()//蛇正常移动，头增长，尾缩短
 	Move();//双头队列的尾部增加
 	snake.front().Clear();//双头队列的头部，就是蛇的尾部
 	snake.pop_front();
+}
+
+bool Snake::GetBigFood(Food& cfood) {
+	if (snake.back().GetX()==cfood.big_x && snake.back().GetY()==cfood.big_y)
+	{//蛇头与限时食物坐标相等时
+		cfood.big_flag = false;//清除闪烁食物各项标志
+		cfood.big_x = 0;
+		cfood.big_y = 0;
+		SetCursorPosition(1,0);//清空进度条
+		std::cout << "                                                            ";
+		return true;
+	}
+	else {
+		return false;
+	}
 }

@@ -27,6 +27,10 @@ public:
 	void Select();
 	void DrawGame();
 	int PlayGame();
+	void UpdateScore(const int&);
+	void RewriteScore();
+	int GameOver();
+	int Menu();
 private:
 	int speed;
 	int key;

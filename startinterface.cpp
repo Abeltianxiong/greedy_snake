@@ -77,6 +77,6 @@ void StartInterface::Action() {
 	PrintFirst();
 	PrintSecond();//此过程，光标一直在蛇尾。看能否读取到队列，就知道是否被清空了
 //	std::cout << std::endl;
-	//while (1);
+
 	PrintThird();//此时，光标到最开始的位置了
 }

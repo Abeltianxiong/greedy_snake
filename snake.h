@@ -23,6 +23,7 @@ public:
 	bool GetFood(Food &);
 	void NormalMove();
 	void Move();
+	bool GetBigFood(Food&);
 private:
 	std::deque<Point> snake;//双端队列尾部是蛇头
 	Direction direction;

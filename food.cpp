@@ -38,7 +38,7 @@ void Food::DrawFood(Snake& csnake){//不完整的数据类型，只有声明，没有具体的实现
 }
 
 void Food::DrawBigFood(Snake& csnake)//绘制限时食物
-{
+{//限时食物进度条初始状态是42
 	SetCursorPosition(5,0);
 	SetColor(11);
 	std::cout << "------------------------------------------";//进度条长度42
@@ -65,11 +65,45 @@ void Food::DrawBigFood(Snake& csnake)//绘制限时食物
 		big_x = tmp_x;
 		big_y = tmp_y;
 		SetCursorPosition(big_x,big_y);
-		SetCursorPosition(big_x,big_y);
+	//	SetCursorPosition(big_x,big_y);
 		SetColor(18);
 		std::cout << "■";
 		big_flag = true;
 		flash_flag = true;//闪烁？
 		break;
 	}
+}
+
+int Food::GetProgressBar() {
+	return progress_bar;//限时食物进度条
+}
+
+bool Food::GetBigFlag() {
+	return big_flag;
+}
+
+void Food::FlashBigFood() {
+	SetCursorPosition(big_x,big_y);
+	SetColor(18);
+	if (flash_flag)
+	{
+		std::cout << "  ";
+	}
+	else {
+		std::cout << "■";
+		flash_flag = true;
+	}
+	SetCursorPosition(26,0);
+	SetColor(11);
+	for (int i = 42; i >= progress_bar; i--)
+		std::cout << "\b \b";
+	--progress_bar;
+	if (progress_bar==0) {
+		SetCursorPosition(big_x, big_y);
+		std::cout << "  ";
+		big_flag = false;
+		big_x = 0;
+		big_y = 0;
+	}
+
 }
